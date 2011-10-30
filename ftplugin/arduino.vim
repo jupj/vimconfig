@@ -55,3 +55,7 @@ hi def link arduinoStdFunc Function
 hi def link arduinoFunc Function
 hi def link arduinoMethod Function
 hi def link arduinoModule Identifier
+
+" Set indentation level to 2 to match the Arduino IDE
+set tabstop=2
+set shiftwidth=2
