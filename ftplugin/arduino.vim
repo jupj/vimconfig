@@ -59,3 +59,4 @@ hi def link arduinoModule Identifier
 " Set indentation level to 2 to match the Arduino IDE
 set tabstop=2
 set shiftwidth=2
+set autoindent
