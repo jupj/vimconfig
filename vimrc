@@ -1,32 +1,31 @@
 source $VIM\_vimrc
+set nocompatible
 
 call pathogen#infect()
 call pathogen#helptags()
 
-" JJ's own settings:
+" UI customisation:
 set guifont=Courier_New:h10:cDEFAULT
-" colorscheme desert
-" colorscheme ir_black
 colorscheme peaksea
 " Format the line numbers:
 hi LineNr guifg=Grey
 hi LineNr guibg=DarkGrey
 
-" Expand tabs to spaces:
+" Expand tabs to 4 spaces:
 set expandtab
-" A tab is 4 spaces wide:
 set tabstop=4
-" Indent code by 4 spaces:
 set shiftwidth=4
-" Disable backup files:
+
+" Disable backup and swap files:
 set nobackup
-set nowritebackup
-" Save swap files in the temp folder:
-set directory=$TMP
+set noswapfile
 
 " Search case-insensitivity unless upper case characters are in the search phrase
 set ignorecase
 set smartcase
+set autoindent " always set autoindenting on
+set copyindent " copy the previous indentation on autoindenting
+set smarttab   "tab uses shiftwidth instead of tabstop
 
 " Spell check
 function! ToggleSpell()
@@ -56,9 +55,6 @@ let pascal_delphi=1
 " Show the line numers:
 set number
 
-"let g:xml_syntax_folding = 1
-"au FileType xml setlocal foldmethod=syntax
-
 " Disable the error beep:
 set noerrorbells
 "set visualbell
@@ -67,4 +63,13 @@ set noerrorbells
 " Map Shift-Space to Esc:
 imap <C-Space> <Esc>
 
+" Map CTRL-N to show NERD_tree
 nmap <silent> <c-n> :NERDTreeToggle<CR>
+
+set hidden "allow unsaved changes in hidden buffers
+filetype plugin indent on " use intending intelligence based on filetype
+
+" Use - instead of : to activate command mode
+nnoremap - :
+" change the mapleader from \ to ,
+let mapleader=","
