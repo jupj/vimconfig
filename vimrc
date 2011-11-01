@@ -1,5 +1,8 @@
 source $VIM\_vimrc
 
+call pathogen#infect()
+call pathogen#helptags()
+
 " JJ's own settings:
 set guifont=Courier_New:h10:cDEFAULT
 " colorscheme desert
