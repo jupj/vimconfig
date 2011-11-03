@@ -73,3 +73,17 @@ filetype plugin indent on " use intending intelligence based on filetype
 nnoremap - :
 " change the mapleader from \ to ,
 let mapleader=","
+" ,s = substitute the current word
+nnoremap <leader>s yiw:%s/<c-r>"/
+" ,c = copy the whole file contents into the clipboard
+nnoremap <leader>c :%y*<CR>
+
+" disable arrowkeys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
