@@ -90,3 +90,16 @@ inoremap <right> <nop>
 
 " <F5> will save and run the file
 nnoremap <F5> :w<CR>:!%<CR>
+
+" Remap left and right arrow keys to indent/de-indent
+" normal mode
+nmap <silent> <Left> <<
+nmap <silent> <Right> >>
+
+" visual mode
+vmap <silent> <Left> <
+vmap <silent> <Right> >
+
+" insert mode
+imap <silent> <Left> <C-D>
+imap <silent> <Right> <C-T>
