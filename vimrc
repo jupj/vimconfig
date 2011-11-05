@@ -96,9 +96,9 @@ nnoremap <F5> :w<CR>:!%<CR>
 nmap <silent> <Left> <<
 nmap <silent> <Right> >>
 
-" visual mode
-vmap <silent> <Left> <
-vmap <silent> <Right> >
+" visual mode (also select the region again)
+vmap <silent> <Left> <gv
+vmap <silent> <Right> >gv
 
 " insert mode
 imap <silent> <Left> <C-D>
