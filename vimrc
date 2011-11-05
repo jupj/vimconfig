@@ -77,6 +77,13 @@ let mapleader=","
 nnoremap <leader>s yiw:%s/<c-r>"/
 " ,c = copy the whole file contents into the clipboard
 nnoremap <leader>c :%y*<CR>
+" ,v = edit vimrc configuration
+nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost vimrc source $MYVIMRC
+endif
 
 " disable arrowkeys
 nnoremap <up> <nop>
@@ -92,14 +99,12 @@ inoremap <right> <nop>
 nnoremap <F5> :w<CR>:!%<CR>
 
 " Remap left and right arrow keys to indent/de-indent
-" normal mode
+" - normal mode
 nmap <silent> <Left> <<
 nmap <silent> <Right> >>
-
-" visual mode (also select the region again)
+" - visual mode (also select the region again)
 vmap <silent> <Left> <gv
 vmap <silent> <Right> >gv
-
-" insert mode
+" - insert mode
 imap <silent> <Left> <C-D>
 imap <silent> <Right> <C-T>
