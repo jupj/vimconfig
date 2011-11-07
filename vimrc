@@ -94,6 +94,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+" j and k work "normally" on wrapped lines
+nmap j gj
+nmap k gk
 
 " <F5> will save and run the file
 nnoremap <F5> :w<CR>:!%<CR>
