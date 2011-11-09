@@ -73,8 +73,9 @@ filetype plugin indent on " use intending intelligence based on filetype
 nnoremap - :
 " change the mapleader from \ to ,
 let mapleader=","
-" ,s = substitute the current word
+" ,s = substitute the current word or selection
 nnoremap <leader>s yiw:%s/<c-r>"/
+vnoremap <leader>s y:%s/<c-r>"/
 " ,c = copy the whole file contents into the clipboard
 nnoremap <leader>c :%y*<CR>
 " ,v = edit vimrc configuration
@@ -86,8 +87,8 @@ if has("autocmd")
 endif
 
 " disable arrowkeys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
+nnoremap <up> <C-Y>
+nnoremap <down> <C-E>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 inoremap <up> <nop>
@@ -95,8 +96,8 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 " j and k work "normally" on wrapped lines
-nmap j gj
-nmap k gk
+nnoremap j gj
+nnoremap k gk
 
 " <F5> will save and run the file
 nnoremap <F5> :w<CR>:!%<CR>
@@ -111,3 +112,7 @@ vmap <silent> <Right> >gv
 " - insert mode
 imap <silent> <Left> <C-D>
 imap <silent> <Right> <C-T>
+
+" Show search result in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
