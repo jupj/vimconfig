@@ -69,8 +69,6 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 set hidden "allow unsaved changes in hidden buffers
 filetype plugin indent on " use intending intelligence based on filetype
 
-" Use - instead of : to activate command mode
-nnoremap - :
 " change the mapleader from \ to ,
 let mapleader=","
 " ,s = substitute the current word or selection
@@ -112,6 +110,10 @@ vmap <silent> <Right> >gv
 " - insert mode
 imap <silent> <Left> <C-D>
 imap <silent> <Right> <C-T>
+
+"  In visual mode when you press * or # to search for the current selection
+vnoremap <silent> * y/<C-R>"<CR>
+vnoremap <silent> # y?<C-R>"<CR>
 
 " Show search result in the middle of the screen
 nnoremap n nzz
