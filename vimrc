@@ -84,19 +84,6 @@ if has("autocmd")
   autocmd bufwritepost vimrc source $MYVIMRC
 endif
 
-" disable arrowkeys
-nnoremap <up> <C-Y>
-nnoremap <down> <C-E>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-" j and k work "normally" on wrapped lines
-nnoremap j gj
-nnoremap k gk
-
 " <F5> will save and run the file
 nnoremap <F5> :w<CR>:!%<CR>
 
@@ -107,9 +94,6 @@ nmap <silent> <Right> >>
 " - visual mode (also select the region again)
 vmap <silent> <Left> <gv
 vmap <silent> <Right> >gv
-" - insert mode
-imap <silent> <Left> <C-D>
-imap <silent> <Right> <C-T>
 
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * y/<C-R>"<CR>
