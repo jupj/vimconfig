@@ -53,7 +53,7 @@ hi def link coffeeExtendedOp coffeeOperator
 " This is separate from `coffeeExtendedOp` to help differentiate commas from
 " dots.
 syn match coffeeSpecialOp /[,;]/ display
-hi def link coffeeSpecialOp SpecialChar
+hi def link coffeeSpecialOp Delimiter
 
 syn match coffeeBoolean /\<\%(true\|on\|yes\|false\|off\|no\)\>/ display
 hi def link coffeeBoolean Boolean
