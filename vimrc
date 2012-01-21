@@ -6,10 +6,7 @@ call pathogen#helptags()
 
 " UI customisation:
 set guifont=Courier_New:h10:cDEFAULT
-colorscheme peaksea
-" Format the line numbers:
-hi LineNr guifg=Grey
-hi LineNr guibg=DarkGrey
+colorscheme mayansmoke
 
 " Expand tabs to 4 spaces:
 set expandtab
@@ -53,7 +50,7 @@ unmap <C-X>
 let pascal_delphi=1
 
 " Show the line numers:
-set number
+"set number
 
 " Disable the error beep:
 set noerrorbells
