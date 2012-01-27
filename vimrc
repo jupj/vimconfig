@@ -6,7 +6,7 @@ call pathogen#helptags()
 
 " UI customisation:
 set guifont=Courier_New:h10:cDEFAULT
-colorscheme mayansmoke
+colorscheme peaksea
 
 " Expand tabs to 4 spaces:
 set expandtab
