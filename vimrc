@@ -50,7 +50,7 @@ unmap <C-X>
 let pascal_delphi=1
 
 " Show the line numers:
-"set number
+set number
 
 " Disable the error beep:
 set noerrorbells
@@ -82,7 +82,7 @@ if has("autocmd")
 endif
 
 " <F5> will save and run the file
-nnoremap <F5> :w<CR>:!%<CR>
+nnoremap <F5> :w<CR>:!"%"<CR>
 
 " Remap left and right arrow keys to indent/de-indent
 " - normal mode
