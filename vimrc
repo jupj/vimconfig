@@ -99,3 +99,7 @@ vnoremap <silent> # y?<C-R>"<CR>
 " Show search result in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
+
+" The sparkup and supertab plugin combination causes tab problems.
+" Map sparkup next mapping to C-x instead of C-n to go around the problem:
+let g:sparkupNextMapping = '<c-x>'
