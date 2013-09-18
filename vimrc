@@ -103,3 +103,6 @@ nnoremap N Nzz
 " The sparkup and supertab plugin combination causes tab problems.
 " Map sparkup next mapping to C-x instead of C-n to go around the problem:
 let g:sparkupNextMapping = '<c-x>'
+
+" Set encoding to utf-8 by default
+set encoding=utf-8
