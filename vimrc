@@ -9,9 +9,10 @@ set guifont=Courier_New:h10:cDEFAULT
 colorscheme mayansmoke
 
 " Expand tabs to 4 spaces:
-set expandtab
-set tabstop=4
+"set expandtab
+"set tabstop=4
 set shiftwidth=4
+set tabstop=4
 
 " Disable backup and swap files:
 set nobackup
@@ -22,7 +23,7 @@ set ignorecase
 set smartcase
 set autoindent " always set autoindenting on
 set copyindent " copy the previous indentation on autoindenting
-set smarttab   "tab uses shiftwidth instead of tabstop
+"set smarttab   "tab uses shiftwidth instead of tabstop
 
 " Spell check
 function! ToggleSpell()
