@@ -108,4 +108,16 @@ let g:sparkupNextMapping = '<c-x>'
 " Set encoding to utf-8 by default
 set encoding=utf-8
 
+" Format .go files when saved
 au BufWritePre *.go Fmt
+
+" Due to scandinavian keyboard, map tag jump
+noremap <c-right> <c-]>
+noremap <c-left> <c-t>
+
+" also, map ,t to update tags file
+nmap <leader>t :silent !ctags -R -f %:p:h\tags %:p:h\*.*<cr>
+
+" Enable omni completion
+inoremap <c-space> <c-x><c-o>
+set omnifunc=syntaxcomplete#Complete
