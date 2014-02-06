@@ -121,3 +121,9 @@ nmap <leader>t :silent !ctags -R -f %:p:h\tags %:p:h\*.*<cr>
 " Enable omni completion
 inoremap <c-space> <c-x><c-o>
 set omnifunc=syntaxcomplete#Complete
+
+" Windows specific settings
+if has("win32") || has("win64")
+	" Use the * register for clipboard (same as Windows clipboard)
+	set clipboard=unnamed
+endif
