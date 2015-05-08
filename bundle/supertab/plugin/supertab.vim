@@ -54,7 +54,7 @@
 " }}}
 
 if v:version < 700
-  finish
+	finish
 endif
 
 if exists('complType') " Integration with other completion functions.

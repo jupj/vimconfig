@@ -1,4 +1,8 @@
-source $VIM\_vimrc
+if has("win32") || has("win64")
+	source $VIM\_vimrc
+else
+	source $VIM/vimrc
+endif
 set nocompatible
 
 call pathogen#infect()
@@ -42,10 +46,6 @@ imap <F4> <Esc>:call ToggleSpell()<CR>a
 
 " Enable python compiler
 autocmd BufNewFile,BufRead *.py compiler python
-
-" Unmap CTRL-A and CTRL-X (added via mswin)
-unmap <C-A>
-unmap <C-X>
 
 " assume .pas-files are delphi ones:
 let pascal_delphi=1
@@ -126,4 +126,8 @@ set omnifunc=syntaxcomplete#Complete
 if has("win32") || has("win64")
 	" Use the * register for clipboard (same as Windows clipboard)
 	set clipboard=unnamed
+
+	" Unmap CTRL-A and CTRL-X (added via mswin)
+	unmap <C-A>
+	unmap <C-X>
 endif
