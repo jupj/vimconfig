@@ -67,17 +67,21 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 set hidden "allow unsaved changes in hidden buffers
 filetype plugin indent on " use intending intelligence based on filetype
 
-" change the mapleader from \ to ,
-let mapleader=","
-" ,s = substitute the current word or selection
+" change the leader from \ to <space>
+" use map instead of mapleader, so that the showcmd will show \
+" (instead of a non-visible space)
+map <space> <leader>
+" <leader>s = substitute the current word or selection
 nnoremap <leader>s yiw:%s/<c-r>"/
 vnoremap <leader>s y:%s/<c-r>"/
-" ,c = copy the whole file contents into the clipboard
+" <leader>c = copy the whole file contents into the clipboard
 nnoremap <leader>c :%y*<CR>
-" ,v = edit vimrc configuration
+" <leader>v = edit vimrc configuration
 nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
-" ,w = save the current file
+" <leader>w = save the current file
 nnoremap <leader>w :w<CR>
+" <leader>m = open list of recent files (MRU plugin)
+nnoremap <leader>m :MRU<CR>
 
 " Source the vimrc file after saving it
 if has("autocmd")
