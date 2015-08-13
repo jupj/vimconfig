@@ -76,6 +76,8 @@ vnoremap <leader>s y:%s/<c-r>"/
 nnoremap <leader>c :%y*<CR>
 " ,v = edit vimrc configuration
 nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
+" ,w = save the current file
+nnoremap <leader>w :w<CR>
 
 " Source the vimrc file after saving it
 if has("autocmd")
