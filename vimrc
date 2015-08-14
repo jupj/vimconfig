@@ -9,7 +9,6 @@ call pathogen#infect()
 call pathogen#helptags()
 
 " UI customisation:
-set guifont=Courier_New:h10:cDEFAULT
 colorscheme mayansmoke
 
 " Expand tabs to 4 spaces:
@@ -136,4 +135,6 @@ if has("win32") || has("win64")
 	" Unmap CTRL-A and CTRL-X (added via mswin)
 	unmap <C-A>
 	unmap <C-X>
+
+	set guifont=Courier_New:h10:cDEFAULT
 endif
