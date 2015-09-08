@@ -138,3 +138,6 @@ if has("win32") || has("win64")
 
 	set guifont=Courier_New:h10:cDEFAULT
 endif
+
+" Map for changing working directory to where the current file is located
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
