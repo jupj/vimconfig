@@ -1,11 +1,11 @@
 " Do not use tabs for Python
-set expandtab
+setlocal expandtab
 
 " <F5> will save and run the file
-nnoremap <F5> :w<CR>:!python "%"<CR>
+nnoremap <buffer> <F5> :w<CR>:!python "%"<CR>
 
 " <F6> will save and lint the file into buffer [pylint_results]
-nnoremap <F6> :call Pylint()<CR>
+nnoremap <buffer> <F6> :call Pylint()<CR>
 
 function! Pylint()
     " Save current buffer and pylint the buffer. Open the results in a new
