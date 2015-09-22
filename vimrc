@@ -141,3 +141,7 @@ endif
 
 " Map for changing working directory to where the current file is located
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" Shortcuts for esc in insert mode
+inoremap jk <esc>
+inoremap kj <esc>
