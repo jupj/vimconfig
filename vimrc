@@ -1,9 +1,71 @@
-if has("win32") || has("win64")
-	source $VIM\_vimrc
-else
-	source $VIM/vimrc
-endif
+" Selected parts from vimrc_example.vim
+" =====================================
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
 set nocompatible
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set backup		" keep a backup file
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " Also don't do it when the mark is in the first line, that is the default
+  " position when opening a file.
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  augroup END
+
+else
+
+  set autoindent		" always set autoindenting on
+
+endif " has("autocmd")
+" End of selected parts from vimrc_example.vim
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -51,14 +113,12 @@ let pascal_delphi=1
 
 " Show the line numers:
 set number
+set relativenumber
 
 " Disable the error beep:
 set noerrorbells
 "set visualbell
 "set t_vb=
-
-" Map Shift-Space to Esc:
-imap <C-Space> <Esc>
 
 " Map CTRL-N to show NERD_tree
 nmap <silent> <c-n> :NERDTreeToggle<CR>
@@ -75,17 +135,18 @@ nnoremap <leader>s yiw:%s/<c-r>"/
 vnoremap <leader>s y:%s/<c-r>"/
 " <leader>c = copy the whole file contents into the clipboard
 nnoremap <leader>c :%y*<CR>
-" <leader>v = edit vimrc configuration
-nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
 " <leader>w = save the current file
 nnoremap <leader>w :w<CR>
 " <leader>m = open list of recent files (MRU plugin)
 nnoremap <leader>m :MRU<CR>
 
+" <leader>v = edit vimrc configuration
+nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
 " Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost vimrc source $MYVIMRC
-endif
+augroup vimrc
+	autocmd!
+	autocmd bufwritepost vimrc source $MYVIMRC
+augroup END
 
 " <F5> will save and run the file
 nnoremap <F5> :w<CR>:!"%"<CR>
@@ -131,11 +192,6 @@ set omnifunc=syntaxcomplete#Complete
 if has("win32") || has("win64")
 	" Use the * register for clipboard (same as Windows clipboard)
 	set clipboard=unnamed
-
-	" Unmap CTRL-A and CTRL-X (added via mswin)
-	unmap <C-A>
-	unmap <C-X>
-
 	set guifont=Courier_New:h10:cDEFAULT
 endif
 
