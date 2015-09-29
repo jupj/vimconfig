@@ -190,10 +190,19 @@ set omnifunc=syntaxcomplete#Complete
 
 " Windows specific settings
 if has("win32") || has("win64")
-	" Use the * register for clipboard (same as Windows clipboard)
-	set clipboard=unnamed
 	set guifont=Courier_New:h10:cDEFAULT
 endif
+
+" Use leader key to cut, copy and paste to system clipboard
+vnoremap <leader>y "+y
+vnoremap <leader>d "+d
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+nnoremap <leader>y "+y
+nnoremap <leader>d "+d
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 
 " Map for changing working directory to where the current file is located
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
