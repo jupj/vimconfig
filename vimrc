@@ -1,3 +1,6 @@
+call pathogen#infect()
+call pathogen#helptags()
+
 " Selected parts from vimrc_example.vim
 " =====================================
 " Use Vim settings, rather than Vi settings (much better!).
@@ -66,9 +69,6 @@ else
 
 endif " has("autocmd")
 " End of selected parts from vimrc_example.vim
-
-call pathogen#infect()
-call pathogen#helptags()
 
 " UI customisation:
 colorscheme mayansmoke
