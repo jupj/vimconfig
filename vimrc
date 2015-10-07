@@ -120,9 +120,6 @@ set noerrorbells
 "set visualbell
 "set t_vb=
 
-" Map CTRL-N to show NERD_tree
-nmap <silent> <c-n> :NERDTreeToggle<CR>
-
 set hidden "allow unsaved changes in hidden buffers
 filetype plugin indent on " use intending intelligence based on filetype
 
@@ -137,8 +134,8 @@ vnoremap <leader>s y:%s/<c-r>"/
 nnoremap <leader>c :%y*<CR>
 " <leader>w = save the current file
 nnoremap <leader>w :w<CR>
-" <leader>m = open list of recent files (MRU plugin)
-nnoremap <leader>m :MRU<CR>
+" <leader>m = open list of recent files (CtrlP plugin)
+nnoremap <leader>m :CtrlPMRU<CR>
 
 " <leader>v = edit vimrc configuration
 nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
@@ -166,10 +163,6 @@ vnoremap <silent> # y?<C-R>"<CR>
 " Show search result in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
-
-" The sparkup and supertab plugin combination causes tab problems.
-" Map sparkup next mapping to C-x instead of C-n to go around the problem:
-let g:sparkupNextMapping = '<c-x>'
 
 " Set encoding to utf-8 by default
 set encoding=utf-8
