@@ -71,7 +71,12 @@ endif " has("autocmd")
 " End of selected parts from vimrc_example.vim
 
 " UI customisation:
-colorscheme mayansmoke
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+colorscheme solarized
 
 " Expand tabs to 4 spaces:
 "set expandtab
@@ -203,3 +208,10 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " Shortcuts for esc in insert mode
 inoremap jk <esc>
 inoremap kj <esc>
+
+" Always show statusline
+set laststatus=2
+
+" Show tabs and trailing spaces
+set list
+set listchars=tab:\|\ ,trail:\ 
