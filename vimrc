@@ -90,6 +90,7 @@ set noswapfile
 
 " Search case-insensitivity unless upper case characters are in the search phrase
 set ignorecase
+set wrapscan
 set smartcase
 set autoindent " always set autoindenting on
 set copyindent " copy the previous indentation on autoindenting
@@ -118,7 +119,7 @@ let pascal_delphi=1
 
 " Show the line numers:
 set number
-set relativenumber
+set norelativenumber
 
 " Disable the error beep:
 set noerrorbells
@@ -172,9 +173,6 @@ nnoremap N Nzz
 " Set encoding to utf-8 by default
 set encoding=utf-8
 
-" Format .go files when saved
-au BufWritePre *.go Fmt
-
 " Due to scandinavian keyboard, map tag jump
 noremap <c-right> <c-]>
 noremap <c-left> <c-t>
@@ -215,3 +213,12 @@ set laststatus=2
 " Show tabs and trailing spaces
 set list
 set listchars=tab:\|\ ,trail:\ 
+
+" Ease dropping to command mode
+nnoremap ö :
+
+" Use <leader>g to grep the current word
+nnoremap <leader>g yiw:Ggrep <c-r>"
+
+" Remove toolbar from gui
+set guioptions-=T
