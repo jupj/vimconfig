@@ -161,6 +161,8 @@ nmap <silent> <Right> >>
 " - visual mode (also select the region again)
 vmap <silent> <Left> <gv
 vmap <silent> <Right> >gv
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
 
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * y/<C-R>"<CR>
@@ -222,3 +224,6 @@ nnoremap <leader>g yiw:Ggrep <c-r>"
 
 " Remove toolbar from gui
 set guioptions-=T
+
+nnoremap j gj
+nnoremap k gk
