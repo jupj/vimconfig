@@ -20,7 +20,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'thinca/vim-localrc'
 Plugin 'digitaltoad/vim-pug' " Jade templates
+Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -250,9 +252,6 @@ set laststatus=2
 set list
 set listchars=tab:\|\ ,trail:\ 
 
-" Ease dropping to command mode
-nnoremap ö :
-
 " Use <leader>g to grep the current word
 nnoremap <leader>g yiw:Ggrep <c-r>"
 
@@ -261,3 +260,13 @@ set guioptions-=T
 
 nnoremap j gj
 nnoremap k gk
+
+set nofixeol
+
+" Use scandinavian chars for square brackets
+nmap ö [
+nmap ä ]
+omap ö [
+omap ä ]
+xmap ö [
+xmap ä ]
