@@ -110,13 +110,14 @@ endif " has("autocmd")
 " UI customisation:
 if has('gui_running')
     set background=light
+    colorscheme mayansmoke
 else
     set background=dark
+    colorscheme industry
 endif
 
 " Expand tabs to 4 spaces:
-"set expandtab
-"set tabstop=4
+set expandtab
 set shiftwidth=4
 set tabstop=4
 
@@ -161,6 +162,7 @@ set norelativenumber
 set noerrorbells
 "set visualbell
 "set t_vb=
+set belloff=all
 
 set hidden "allow unsaved changes in hidden buffers
 filetype plugin indent on " use intending intelligence based on filetype
@@ -219,8 +221,8 @@ noremap <c-left> <c-t>
 nmap <leader>t :silent !ctags -R -f %:p:h\tags %:p:h\*.*<cr>
 
 " Enable omni completion
-inoremap <c-space> <c-x><c-o>
 set omnifunc=syntaxcomplete#Complete
+set completeopt=menuone,longest
 
 " Windows specific settings
 if has("win32") || has("win64")
