@@ -192,15 +192,17 @@ augroup END
 " <F5> will save and run the file
 nnoremap <F5> :w<CR>:!"%"<CR>
 
-" Remap left and right arrow keys to indent/de-indent
+" Remap tab and shift-tab to indent/de-indent
 " - normal mode
-nmap <silent> <Left> <<
-nmap <silent> <Right> >>
+nnoremap <S-Tab> <<
+nnoremap <Tab> >>
 " - visual mode (also select the region again)
-vmap <silent> <Left> <gv
-vmap <silent> <Right> >gv
-vnoremap <silent> < <gv
-vnoremap <silent> > >gv
+vnoremap <S-Tab> <gv
+vnoremap <Tab> >gv
+
+"Select the region again after indent
+vnoremap < <gv
+vnoremap > >gv
 
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * y/<C-R>"<CR>
