@@ -16,6 +16,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'fatih/vim-go'
 Plugin 'thinca/vim-localrc'
@@ -110,7 +111,7 @@ endif " has("autocmd")
 " UI customisation:
 if has('gui_running')
     set background=light
-    colorscheme mayansmoke
+    colorscheme solarized
 else
     set background=dark
     colorscheme industry
