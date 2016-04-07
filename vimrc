@@ -257,7 +257,7 @@ set list
 set listchars=tab:\|\ ,trail:\ 
 
 " Use <leader>g to grep the current word
-nnoremap <leader>g yiw:Ggrep <c-r>"
+nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
 
 " Remove toolbar from gui
 set guioptions-=T
