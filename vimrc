@@ -24,6 +24,7 @@ Plugin 'digitaltoad/vim-pug' " Jade templates
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'vimwiki/vimwiki'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -163,7 +164,7 @@ set norelativenumber
 set noerrorbells
 "set visualbell
 "set t_vb=
-set belloff=all
+"set belloff=all
 
 set hidden "allow unsaved changes in hidden buffers
 filetype plugin indent on " use intending intelligence based on filetype
@@ -184,14 +185,17 @@ nnoremap <leader>m :CtrlPMRU<CR>
 
 " <leader>v = edit vimrc configuration
 nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
+
+" <F5> will save and run the file
+nnoremap <F5> :w<CR>:!"%"<CR>
+
 " Source the vimrc file after saving it
 augroup vimrc
 	autocmd!
 	autocmd bufwritepost vimrc source $MYVIMRC
-augroup END
 
-" <F5> will save and run the file
-nnoremap <F5> :w<CR>:!"%"<CR>
+	autocmd FileType vim nnoremap <F5> source %
+augroup END
 
 " Remap tab and shift-tab to indent/de-indent
 " - normal mode
@@ -275,3 +279,6 @@ omap ö [
 omap ä ]
 xmap ö [
 xmap ä ]
+
+set exrc
+set secure

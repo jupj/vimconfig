@@ -3,6 +3,10 @@ setlocal expandtab
 
 " <F5> will save and run the file
 nnoremap <buffer> <F5> :w<CR>:!python "%"<CR>
+inoremap <buffer> <F5> <ESC>:w<CR>:!python "%"<CR>
+
+" <F9> will save and run the file and don't care about output
+nnoremap <buffer> <F9> :w<CR>:silent !python "%"<CR>
 
 " <F6> will save and lint the file into buffer [pylint_results]
 nnoremap <buffer> <F6> :call Pylint()<CR>
