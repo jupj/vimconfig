@@ -22,6 +22,7 @@ Plugin 'fatih/vim-go'
 Plugin 'thinca/vim-localrc'
 Plugin 'digitaltoad/vim-pug' " Jade templates
 Plugin 'tpope/vim-sensible'
+Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vimwiki/vimwiki'
@@ -111,7 +112,7 @@ endif " has("autocmd")
 
 " UI customisation:
 if has('gui_running')
-    set background=light
+    set background=dark
     colorscheme solarized
 else
     set background=dark
