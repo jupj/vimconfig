@@ -112,7 +112,7 @@ endif " has("autocmd")
 
 " UI customisation:
 if has('gui_running')
-    set background=dark
+    set background=light
     colorscheme solarized
 else
     set background=dark
@@ -234,7 +234,7 @@ set completeopt=menuone,longest
 
 " Windows specific settings
 if has("win32") || has("win64")
-	set guifont=Courier_New:h10:cDEFAULT
+	set guifont=Consolas:h11:cDEFAULT
 endif
 
 " Use leader key to cut, copy and paste to system clipboard
