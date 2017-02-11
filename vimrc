@@ -2,33 +2,39 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=$HOME/vimfiles/bundle/Vundle.vim
-call vundle#begin('$USERPROFILE/vimfiles/bundle')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if isdirectory(expand("$HOME/vimfiles/bundle/Vundle.vim"))
+    " set the runtime path to include Vundle and initialize
+    set rtp+=$HOME/vimfiles/bundle/Vundle.vim
+    call vundle#begin('$USERPROFILE/vimfiles/bundle')
+    " alternatively, pass a path where Vundle should install plugins
+    "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
 
-" Plugins from github:
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
-Plugin 'thinca/vim-localrc'
-Plugin 'digitaltoad/vim-pug' " Jade templates
-Plugin 'tpope/vim-sensible'
-Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vimwiki/vimwiki'
+    " Plugins from github:
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'vim-airline/vim-airline'
+    if has('gui_running')
+        Plugin 'altercation/vim-colors-solarized'
+        let s:colorscheme="solarized"
+        let s:background="light"
+    endif
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'fatih/vim-go'
+    Plugin 'thinca/vim-localrc'
+    Plugin 'digitaltoad/vim-pug' " Jade templates
+    Plugin 'tpope/vim-sensible'
+    Plugin 'ervandew/supertab'
+    Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-unimpaired'
+    Plugin 'vimwiki/vimwiki'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+endif
 filetype plugin indent on    " required
 
 " Brief help
@@ -111,12 +117,11 @@ endif " has("autocmd")
 " End of selected parts from vimrc_example.vim
 
 " UI customisation:
-if has('gui_running')
-    set background=light
-    colorscheme solarized
-else
-    set background=dark
-    colorscheme industry
+if exists("s:colorscheme")
+    exec "colorscheme " . s:colorscheme
+endif
+if exists("s:background")
+    exec "set background=" . s:background
 endif
 
 " Expand tabs to 4 spaces:
