@@ -2,10 +2,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-if isdirectory(expand("$HOME/vimfiles/bundle/Vundle.vim"))
+if isdirectory(expand("~/vimfiles/bundle/Vundle.vim"))
     " set the runtime path to include Vundle and initialize
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim
-    call vundle#begin('$USERPROFILE/vimfiles/bundle')
+    set rtp+=~/vimfiles/bundle/Vundle.vim
+    call vundle#begin('~/vimfiles/bundle')
     " alternatively, pass a path where Vundle should install plugins
     "call vundle#begin('~/some/path/here')
 
@@ -190,7 +190,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>m :CtrlPMRU<CR>
 
 " <leader>v = edit vimrc configuration
-nnoremap <leader>v :e $HOME/vimfiles/vimrc<CR>
+nnoremap <leader>v :e $MYVIMRC<CR>
 
 " <F5> will save and run the file
 nnoremap <F5> :w<CR>:!"%"<CR>
@@ -198,7 +198,7 @@ nnoremap <F5> :w<CR>:!"%"<CR>
 " Source the vimrc file after saving it
 augroup vimrc
 	autocmd!
-	autocmd bufwritepost vimrc source $MYVIMRC
+	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 	autocmd FileType vim nnoremap <F5> source %
 augroup END
