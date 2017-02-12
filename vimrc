@@ -276,7 +276,9 @@ set guioptions-=T
 nnoremap j gj
 nnoremap k gk
 
-set nofixeol
+if v:version >= 800
+    set nofixeol
+endif
 
 " Use scandinavian chars for square brackets
 nmap ö [
