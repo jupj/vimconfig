@@ -2,10 +2,12 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-if isdirectory(expand("~/vimfiles/bundle/Vundle.vim"))
+let s:vimdir=fnamemodify($MYVIMRC, ":p:h")
+
+if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     " set the runtime path to include Vundle and initialize
-    set rtp+=~/vimfiles/bundle/Vundle.vim
-    call vundle#begin('~/vimfiles/bundle')
+    exe "set rtp+=" . s:vimdir . "/bundle/Vundle.vim"
+    call vundle#begin(s:vimdir . '/bundle')
     " alternatively, pass a path where Vundle should install plugins
     "call vundle#begin('~/some/path/here')
 
