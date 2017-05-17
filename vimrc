@@ -131,6 +131,9 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
+" Use <leader><tab> to toggle the expandtab option
+nnoremap <leader><tab> :set invexpandtab<cr>:set expandtab?<cr>
+
 " Disable backup and swap files:
 set nobackup
 set noswapfile
