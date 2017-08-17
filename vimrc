@@ -26,6 +26,12 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     endif
     Plugin 'tpope/vim-fugitive'
     Plugin 'fatih/vim-go'
+    " Use goimports instead of gofmt when saving files
+    let g:go_fmt_command = "goimports"
+    " Automatically show info about the code under cursor
+    let g:go_auto_type_info = 1
+    " Show all output in quickfix list
+    let g:go_list_type = "quickfix"
     Plugin 'thinca/vim-localrc'
     Plugin 'digitaltoad/vim-pug' " Jade templates
     Plugin 'tpope/vim-sensible'
