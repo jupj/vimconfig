@@ -18,6 +18,7 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'kien/ctrlp.vim'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/syntastic'
+    let g:pymode_python = 'python3'
     Plugin 'vim-airline/vim-airline'
     if has('gui_running')
         Plugin 'altercation/vim-colors-solarized'
@@ -28,8 +29,6 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'fatih/vim-go'
     " Use goimports instead of gofmt when saving files
     let g:go_fmt_command = "goimports"
-    " Automatically show info about the code under cursor
-    let g:go_auto_type_info = 1
     " Show all output in quickfix list
     let g:go_list_type = "quickfix"
     Plugin 'thinca/vim-localrc'
