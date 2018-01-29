@@ -196,7 +196,7 @@ vnoremap <leader>s y:%s/<c-r>"/
 " <leader>c = copy the whole file contents into the clipboard
 nnoremap <leader>c :%y*<CR>
 " <leader>w = save the current file
-nnoremap <leader>w :w<CR>
+nnoremap <leader>w :up<CR>
 " <leader>m = open list of recent files (CtrlP plugin)
 nnoremap <leader>m :CtrlPMRU<CR>
 
@@ -204,7 +204,7 @@ nnoremap <leader>m :CtrlPMRU<CR>
 nnoremap <leader>v :e $MYVIMRC<CR>
 
 " <F5> will save and run the file
-nnoremap <F5> :w<CR>:!"%"<CR>
+nnoremap <F5> :up<CR>:!"%"<CR>
 
 " Source the vimrc file after saving it
 augroup vimrc
