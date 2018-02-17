@@ -1,10 +1,17 @@
-" Use vundle for plugin management:
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Use Vim settings, rather than Vi settings
+set nocompatible
 
+" Load plugins with vundle {{{
+" Find out the path of the .vimrc file
 let s:vimdir=fnamemodify($MYVIMRC, ":p:h")
 
+" Use vundle for plugin management (if present):
+" To install, open shell in ~/.vim folder:
+"   $ git submodule init
+"   $ git submodule update
+"   $ vim -c :PluginInstall
 if isdirectory(s:vimdir . "/bundle/Vundle.vim")
+    filetype off " required for vundle
     " set the runtime path to include Vundle and initialize
     exe "set rtp+=" . s:vimdir . "/bundle/Vundle.vim"
     call vundle#begin(s:vimdir . '/bundle')
@@ -16,6 +23,8 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
 
     " Plugins from github:
     Plugin 'kien/ctrlp.vim'
+    " Use <leader>m to open list of recent files
+    nnoremap <leader>m :CtrlPMRU<CR>
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/syntastic'
     let g:pymode_python = 'python3'
@@ -26,6 +35,8 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
         let s:background="light"
     endif
     Plugin 'tpope/vim-fugitive'
+    " Use <leader>g to grep the current word
+    nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
     Plugin 'fatih/vim-go'
     " Use goimports instead of gofmt when saving files
     let g:go_fmt_command = "goimports"
@@ -38,90 +49,104 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'tpope/vim-surround'
     Plugin 'tpope/vim-unimpaired'
     Plugin 'vimwiki/vimwiki'
+    "let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
     Plugin 'PProvost/vim-ps1'
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
 endif
-filetype plugin indent on    " required
+" }}}
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-" Selected parts from vimrc_example.vim
-" =====================================
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
+" Set options & misc settings {{{
+" Run :h '<option>' to see what each option does
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+set history=1000        " keep history
+set ruler               " show the cursor position all the time
+set showcmd             " display incomplete commands
+set lazyredraw          " Don't redraw screen too eagerly (eg. during macros)
+set splitright          " Open vertical split to the right
+set wildmenu            " Use menu when tabbing through options
+set laststatus=2        " Always show statusline
 
-set backup		" keep a backup file
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set ttimeout            " time out for key codes
+set ttimeoutlen=100     " wait up to 100ms after Esc for special key
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+" Show @@@ in the last line if it is truncated.
+set display=lastline
 
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
+" Show tabs and trailing spaces
+set list
+set listchars=tab:\|\ ,trail:\ 
 
-" In many terminal emulators the mouse works just fine, thus enable it.
+set exrc
+set secure
+
+" Tabs and indentation:
+set expandtab
+set shiftwidth=4
+set smarttab            "tab uses shiftwidth for indent
+set autoindent
+
+set scrolloff=1         " Show at least one line under/above cursor
+set sidescrolloff=5     " Show at least 5 chars left/right of cursor
+
+" File management:
+set nobackup
+set noswapfile
+set autoread
+set hidden              " Allow unsaved changes in hidden buffers
+set encoding=utf-8      " Set encoding to utf-8 by default
+
+" Enable omni completion
+set omnifunc=syntaxcomplete#Complete
+set completeopt=menuone,longest
+
+" Search related:
+set ignorecase  " Search case-insensitively...
+set smartcase   " ... unless there is a uppercase-letter in search string
+set wrapscan    " Continue seatch from start of file when reaching end of file
+set hlsearch    " highlightg the last used search pattern.
+if has('reltime')
+    " do incremental searching when timeout is possible
+    set incsearch
+endif
+
+" Show the line numers:
+set number
+set norelativenumber
+
+" Disable the error beep:
+set noerrorbells
+
+if v:version >= 800
+    " Don't touch the end of file char automagically
+    set nofixeol
+endif
+
+" In many terminal emulators the mouse works just fine, enable it.
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
+" Switch syntax highlighting on when the terminal has colors or when using the
+" GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
+    syntax on
 endif
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+" Windows specific settings
+if has("win32") || has("win64")
+    set guifont=Consolas:h11:cDEFAULT
+    " Remove toolbar from gui
+    set guioptions-=T
+endif
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-" End of selected parts from vimrc_example.vim
+if has('langmap') && exists('+langremap')
+    " Prevent that the langmap option applies to characters that result from a
+    " mapping.  If set (default), this may break plugins (but it's backward
+    " compatible).
+    set nolangremap
+endif
 
 " UI customisation:
 if exists("s:colorscheme")
@@ -130,26 +155,6 @@ endif
 if exists("s:background")
     exec "set background=" . s:background
 endif
-
-" Expand tabs to 4 spaces:
-set expandtab
-set shiftwidth=4
-set tabstop=4
-
-" Use <leader><tab> to toggle the expandtab option
-nnoremap <leader><tab> :set invexpandtab<cr>:set expandtab?<cr>
-
-" Disable backup and swap files:
-set nobackup
-set noswapfile
-
-" Search case-insensitivity unless upper case characters are in the search phrase
-set ignorecase
-set wrapscan
-set smartcase
-set autoindent " always set autoindenting on
-set copyindent " copy the previous indentation on autoindenting
-"set smarttab   "tab uses shiftwidth instead of tabstop
 
 " Spell check
 function! ToggleSpell()
@@ -161,29 +166,51 @@ function! ToggleSpell()
         unlet b:spell
     endif
 endfunction
- 
-" Map the <F4> to spell checking
-nmap <F4> :call ToggleSpell()<CR>
-imap <F4> <Esc>:call ToggleSpell()<CR>a
-
-" Enable python compiler
-autocmd BufNewFile,BufRead *.py compiler python
 
 " assume .pas-files are delphi ones:
 let pascal_delphi=1
+" }}}
 
-" Show the line numers:
-set number
-set norelativenumber
+" Autocommands {{{
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+    " Enable file type detection
+    filetype plugin indent on
 
-" Disable the error beep:
-set noerrorbells
-"set visualbell
-"set t_vb=
-"set belloff=all
+    " Put these in an autocmd group, so that we can delete them easily.
+    augroup vimrcEx
+        au!
 
-set hidden "allow unsaved changes in hidden buffers
-filetype plugin indent on " use intending intelligence based on filetype
+        " For all text files set 'textwidth' to 78 characters.
+        autocmd FileType text setlocal textwidth=78
+
+        " When editing a file, always jump to the last known cursor position.
+        " Don't do it when the position is invalid or when inside an event handler
+        " (happens when dropping a file on gvim).
+        " Also don't do it when the mark is in the first line, that is the default
+        " position when opening a file.
+        autocmd BufReadPost *
+                    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                    \   exe "normal! g`\"" |
+                    \ endif
+
+        " Source the vimrc file after saving it
+        autocmd BufWritePost $MYVIMRC source $MYVIMRC | :e
+    augroup END
+endif " has("autocmd")
+" }}}
+
+" Mappings {{{
+
+" From defaults.vim:
+" Don't use Ex mode, use Q for formatting.
+" Revert with ":unmap Q".
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+" Revert with ":iunmap <C-U>".
+inoremap <C-U> <C-G>u<C-U>
 
 " change the leader from \ to <space>
 " use map instead of mapleader, so that the showcmd will show \
@@ -196,22 +223,17 @@ vnoremap <leader>s y:%s/<c-r>"/
 nnoremap <leader>c :%y*<CR>
 " <leader>w = save the current file
 nnoremap <leader>w :up<CR>
-" <leader>m = open list of recent files (CtrlP plugin)
-nnoremap <leader>m :CtrlPMRU<CR>
+" <leader>q = :q
+nnoremap <leader>q :q<CR>
+
+" <F4>: toggle spell checking
+nmap <F4> :call ToggleSpell()<CR>
+imap <F4> <Esc>:call ToggleSpell()<CR>a
+" <F5>: save and run the file
+nnoremap <F5> :up<CR>:!"%"<CR>
 
 " <leader>v = edit vimrc configuration
 nnoremap <leader>v :e $MYVIMRC<CR>
-
-" <F5> will save and run the file
-nnoremap <F5> :up<CR>:!"%"<CR>
-
-" Source the vimrc file after saving it
-augroup vimrc
-	autocmd!
-	autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
-	autocmd FileType vim nnoremap <F5> source %
-augroup END
 
 " Remap tab and shift-tab to indent/de-indent
 " - normal mode
@@ -233,24 +255,12 @@ vnoremap <silent> # y?<C-R>"<CR>
 nnoremap n nzz
 nnoremap N Nzz
 
-" Set encoding to utf-8 by default
-set encoding=utf-8
-
 " Due to scandinavian keyboard, map tag jump
 noremap <c-right> <c-]>
 noremap <c-left> <c-t>
 
 " also, map ,t to update tags file
 nmap <leader>t :silent !ctags -R -f %:p:h\tags %:p:h\*.*<cr>
-
-" Enable omni completion
-set omnifunc=syntaxcomplete#Complete
-set completeopt=menuone,longest
-
-" Windows specific settings
-if has("win32") || has("win64")
-	set guifont=Consolas:h11:cDEFAULT
-endif
 
 " Use leader key to cut, copy and paste to system clipboard
 vnoremap <leader>y "+y
@@ -270,25 +280,8 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 inoremap jk <esc>
 inoremap kj <esc>
 
-" Always show statusline
-set laststatus=2
-
-" Show tabs and trailing spaces
-set list
-set listchars=tab:\|\ ,trail:\ 
-
-" Use <leader>g to grep the current word
-nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
-
-" Remove toolbar from gui
-set guioptions-=T
-
 nnoremap j gj
 nnoremap k gk
-
-if v:version >= 800
-    set nofixeol
-endif
 
 " Use scandinavian chars for square brackets
 nmap ö [
@@ -297,7 +290,6 @@ omap ö [
 omap ä ]
 xmap ö [
 xmap ä ]
+" }}}
 
-set exrc
-set secure
-set nofixendofline
+" vim:foldmethod=marker:foldlevel=0
