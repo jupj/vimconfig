@@ -25,6 +25,7 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'kien/ctrlp.vim'
     " Use <leader>m to open list of recent files
     nnoremap <leader>m :CtrlPMRU<CR>
+    let g:ctrlp_custom_ignore = '\v[\/](node_modules)$'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/syntastic'
     let g:pymode_python = 'python3'
@@ -40,6 +41,8 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'fatih/vim-go'
     " Use goimports instead of gofmt when saving files
     let g:go_fmt_command = "goimports"
+    " Automatically show info about the code under cursor
+    "let g:go_auto_type_info = 1
     " Show all output in quickfix list
     let g:go_list_type = "quickfix"
     Plugin 'thinca/vim-localrc'
@@ -51,6 +54,12 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'vimwiki/vimwiki'
     "let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
     Plugin 'PProvost/vim-ps1'
+    Plugin 'lervag/vimtex'
+    let g:tex_flavor='latex'
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk='-reuse-instance'
+
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
 endif
@@ -279,6 +288,17 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " Shortcuts for esc in insert mode
 inoremap jk <esc>
 inoremap kj <esc>
+
+" Use ctrl-UP and ctrl-DOWN to show and hide the quickfix list
+noremap <c-up> :copen<cr>
+noremap <c-down> :cclose<cr>
+
+" Text selected by left mouse is yanked to the * register
+" (Can be pasted with MiddleMouse)
+vnoremap <LeftRelease> "*ygv
+
+" Use <leader>g to grep the current word
+nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
 
 nnoremap j gj
 nnoremap k gk
