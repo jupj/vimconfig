@@ -310,6 +310,10 @@ omap ö [
 omap ä ]
 xmap ö [
 xmap ä ]
+
+" Filter through awk
+nnoremap <leader>a :%!awk ''<Left>
+vnoremap <leader>a !awk ''<Left>
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
