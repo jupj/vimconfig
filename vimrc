@@ -33,7 +33,7 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     if has('gui_running')
         Plugin 'altercation/vim-colors-solarized'
         let s:colorscheme="solarized"
-        let s:background="light"
+        let s:background="dark"
     endif
     Plugin 'tpope/vim-fugitive'
     " Use <leader>g to grep the current word
@@ -50,6 +50,7 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     let g:go_def_mode = 'godef'
     Plugin 'thinca/vim-localrc'
     Plugin 'digitaltoad/vim-pug' " Jade templates
+    Plugin 'mfukar/robotframework-vim'
     Plugin 'tpope/vim-sensible'
     Plugin 'ervandew/supertab'
     Plugin 'tpope/vim-surround'
@@ -290,7 +291,6 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Shortcuts for esc in insert mode
 inoremap jk <esc>
-inoremap kj <esc>
 
 " Use ctrl-UP and ctrl-DOWN to show and hide the quickfix list
 noremap <c-up> :copen<cr>
@@ -313,6 +313,7 @@ omap ö [
 omap ä ]
 xmap ö [
 xmap ä ]
-" }}}
 
-" vim:foldmethod=marker:foldlevel=0
+" gl will open up the link under the cursor (in Windows)
+nnoremap gl :execute "!start " . expand("<cfile>")<cr>
+" }}}
