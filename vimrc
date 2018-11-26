@@ -314,6 +314,11 @@ omap ä ]
 xmap ö [
 xmap ä ]
 
+" Filter through awk
+nnoremap <leader>a :%!awk ''<Left>
+vnoremap <leader>a !awk ''<Left>
+" }}}
+
 " gl will open up the link under the cursor (in Windows)
 nnoremap gl :execute "!start " . expand("<cfile>")<cr>
 " }}}
