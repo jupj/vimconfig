@@ -45,6 +45,9 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     "let g:go_auto_type_info = 1
     " Show all output in quickfix list
     let g:go_list_type = "quickfix"
+    " Change GoDef to use 'godef' instead of 'guru', as this works
+    " better outside GOPATH
+    let g:go_def_mode = 'godef'
     Plugin 'thinca/vim-localrc'
     Plugin 'digitaltoad/vim-pug' " Jade templates
     Plugin 'tpope/vim-sensible'

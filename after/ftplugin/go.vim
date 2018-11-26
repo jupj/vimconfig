@@ -13,3 +13,14 @@ nnoremap <buffer> <leader>t :up<cr>:GoTest<cr>
 nmap <c-right> gd
 " Go back from definition (allow remapping so that vim-go can do it's magic)
 nmap <c-left> <c-t>
+
+" Add abbreviations
+iabbrev <buffer> perr if err != nil {<cr>panic(err)<cr>}
+iabbrev <buffer> rerr if err != nil {<cr>return err<cr>}
+iabbrev <buffer> rnerr if err != nil {<cr>return nil, err<cr>}
+iabbrev <buffer> defc defer.Close()<left><left><left><left><left><left><left><left>
+
+" Set tab settings
+setlocal tabstop=4
+setlocal noexpandtab
+setlocal shiftwidth=4
