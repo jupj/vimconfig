@@ -238,6 +238,8 @@ nnoremap <leader>c :%y*<CR>
 nnoremap <leader>w :up<CR>
 " <leader>q = :q
 nnoremap <leader>q :q<CR>
+" <leader>1 = :!
+nnoremap <leader>1 :!
 
 " <F4>: toggle spell checking
 nmap <F4> :call ToggleSpell()<CR>
