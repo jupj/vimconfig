@@ -33,7 +33,6 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     if has('gui_running')
         Plugin 'altercation/vim-colors-solarized'
         let s:colorscheme="solarized"
-        let s:background="dark"
     endif
     Plugin 'tpope/vim-fugitive'
     " Use <leader>g to grep the current word
@@ -165,9 +164,7 @@ endif
 if exists("s:colorscheme")
     exec "colorscheme " . s:colorscheme
 endif
-if exists("s:background")
-    exec "set background=" . s:background
-endif
+set background=dark
 
 " Spell check
 function! ToggleSpell()
