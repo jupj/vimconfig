@@ -182,6 +182,13 @@ endfunction
 
 " assume .pas-files are delphi ones:
 let pascal_delphi=1
+
+" netrw file browser settings:
+let g:netrw_banner = 0 " hide banner
+let g:netrw_browse_split = 4 " open files in last window
+let g:netrw_winsize = 20 " use only 20% width of page
+let g:netrw_liststyle = 3 " use tree-view
+
 " }}}
 
 " Autocommands {{{
