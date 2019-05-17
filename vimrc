@@ -150,8 +150,8 @@ endif
 set termguicolors
 if exists('s:colorscheme') && !empty(globpath(&rtp, 'colors/' . s:colorscheme . '.vim'))
     exec "colorscheme " . s:colorscheme
+    set background=dark
 endif
-set background=dark
 
 " Spell check
 function! ToggleSpell()
