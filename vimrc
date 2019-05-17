@@ -243,6 +243,8 @@ nnoremap <leader>w :up<CR>
 nnoremap <leader>q :q<CR>
 " <leader>1 = :!
 nnoremap <leader>1 :!
+" Make it easier to search with scandinavian keyboard layout
+nnoremap - /
 
 " <F4>: toggle spell checking
 nmap <F4> :call ToggleSpell()<CR>
