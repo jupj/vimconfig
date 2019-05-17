@@ -48,6 +48,7 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'thinca/vim-localrc'
     Plugin 'digitaltoad/vim-pug' " Jade templates
     Plugin 'mfukar/robotframework-vim'
+    Plugin 'leafgarland/typescript-vim'
     Plugin 'tpope/vim-sensible'
     Plugin 'ervandew/supertab'
     Plugin 'tpope/vim-surround'
