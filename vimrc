@@ -30,10 +30,8 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'scrooloose/syntastic'
     let g:pymode_python = 'python3'
     Plugin 'vim-airline/vim-airline'
-    if has('gui_running')
-        Plugin 'altercation/vim-colors-solarized'
-        let s:colorscheme="solarized"
-    endif
+    Plugin 'morhetz/gruvbox'
+    let s:colorscheme="gruvbox"
     Plugin 'tpope/vim-fugitive'
     " Use <leader>g to grep the current word
     nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
@@ -161,7 +159,8 @@ if has('langmap') && exists('+langremap')
 endif
 
 " UI customisation:
-if exists("s:colorscheme")
+set termguicolors
+if exists('s:colorscheme') && !empty(globpath(&rtp, 'colors/' . s:colorscheme . '.vim'))
     exec "colorscheme " . s:colorscheme
 endif
 set background=dark
