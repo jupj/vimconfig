@@ -5,39 +5,25 @@ set nocompatible
 " Find out the path of the .vimrc file
 let s:vimdir=fnamemodify($MYVIMRC, ":p:h")
 
-" Use vundle for plugin management (if present):
-" To install, open shell in ~/.vim folder:
-"   $ git submodule init
-"   $ git submodule update
-"   $ vim -c :PluginInstall
-if isdirectory(s:vimdir . "/bundle/Vundle.vim")
-    filetype off " required for vundle
-    " set the runtime path to include Vundle and initialize
-    exe "set rtp+=" . s:vimdir . "/bundle/Vundle.vim"
-    call vundle#begin(s:vimdir . '/bundle')
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
-
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
+" Use vim-plug for plugin management (if present):
+if !empty(glob(s:vimdir . "/autoload/plug.vim"))
+    call plug#begin(s:vimdir . '/plugged')
 
     " Plugins from github:
-    Plugin 'kien/ctrlp.vim'
+    Plug 'kien/ctrlp.vim'
     " Use <leader>m to open list of recent files
     nnoremap <leader>m :CtrlPMRU<CR>
     let g:ctrlp_custom_ignore = '\v[\/](node_modules)$'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'scrooloose/syntastic'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/syntastic'
     let g:pymode_python = 'python3'
-    Plugin 'vim-airline/vim-airline'
-    if has('gui_running')
-        Plugin 'altercation/vim-colors-solarized'
-        let s:colorscheme="solarized"
-    endif
-    Plugin 'tpope/vim-fugitive'
+    Plug 'vim-airline/vim-airline'
+    Plug 'morhetz/gruvbox'
+    let s:colorscheme="gruvbox"
+    Plug 'tpope/vim-fugitive'
     " Use <leader>g to grep the current word
     nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
-    Plugin 'fatih/vim-go'
+    Plug 'fatih/vim-go'
     " Use goimports instead of gofmt when saving files
     let g:go_fmt_command = "goimports"
     " Use guru instead of gocode
@@ -49,24 +35,24 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     " Change GoDef to use 'godef' instead of 'guru', as this works
     " better outside GOPATH
     let g:go_def_mode = 'godef'
-    Plugin 'thinca/vim-localrc'
-    Plugin 'digitaltoad/vim-pug' " Jade templates
-    Plugin 'mfukar/robotframework-vim'
-    Plugin 'tpope/vim-sensible'
-    Plugin 'ervandew/supertab'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-unimpaired'
-    Plugin 'vimwiki/vimwiki'
+    Plug 'thinca/vim-localrc'
+    Plug 'digitaltoad/vim-pug' " Jade templates
+    Plug 'mfukar/robotframework-vim'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'tpope/vim-sensible'
+    Plug 'ervandew/supertab'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'vimwiki/vimwiki'
     "let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-    Plugin 'PProvost/vim-ps1'
-    Plugin 'lervag/vimtex'
+    Plug 'PProvost/vim-ps1'
+    Plug 'lervag/vimtex'
     let g:tex_flavor='latex'
     let g:vimtex_view_general_viewer = 'SumatraPDF'
     let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
     let g:vimtex_view_general_options_latexmk='-reuse-instance'
-
-    " All of your Plugins must be added before the following line
-    call vundle#end()            " required
+    " All plugins must be added before plug#end
+    call plug#end()
 endif
 " }}}
 
@@ -163,10 +149,11 @@ if has('langmap') && exists('+langremap')
 endif
 
 " UI customisation:
-if exists("s:colorscheme")
+set termguicolors
+if exists('s:colorscheme') && !empty(globpath(&rtp, 'colors/' . s:colorscheme . '.vim'))
     exec "colorscheme " . s:colorscheme
+    set background=dark
 endif
-set background=dark
 
 " Spell check
 function! ToggleSpell()
@@ -181,6 +168,13 @@ endfunction
 
 " assume .pas-files are delphi ones:
 let pascal_delphi=1
+
+" netrw file browser settings:
+let g:netrw_banner = 0 " hide banner
+let g:netrw_browse_split = 4 " open files in last window
+let g:netrw_winsize = 20 " use only 20% width of page
+let g:netrw_liststyle = 3 " use tree-view
+
 " }}}
 
 " Autocommands {{{
@@ -234,6 +228,8 @@ nnoremap <leader>c :%y*<CR>
 nnoremap <leader>w :up<CR>
 " <leader>q = :q
 nnoremap <leader>q :q<CR>
+" Make it easier to search with scandinavian keyboard layout
+nnoremap - /
 
 " <F4>: toggle spell checking
 nmap <F4> :call ToggleSpell()<CR>
