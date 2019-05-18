@@ -23,7 +23,7 @@ if !empty(glob(s:vimdir . "/autoload/plug.vim"))
     Plug 'tpope/vim-fugitive'
     " Use <leader>g to grep the current word
     nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
-    Plug 'fatih/vim-go'
+    Plug 'fatih/vim-go', {'for': 'go'}
     " Use goimports instead of gofmt when saving files
     let g:go_fmt_command = "goimports"
     " Use guru instead of gocode
@@ -36,17 +36,17 @@ if !empty(glob(s:vimdir . "/autoload/plug.vim"))
     " better outside GOPATH
     let g:go_def_mode = 'godef'
     Plug 'thinca/vim-localrc'
-    Plug 'digitaltoad/vim-pug' " Jade templates
-    Plug 'mfukar/robotframework-vim'
-    Plug 'leafgarland/typescript-vim'
+    Plug 'digitaltoad/vim-pug', {'for': 'pug'} " Jade templates
+    Plug 'mfukar/robotframework-vim', {'for': 'robot'}
+    Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
     Plug 'tpope/vim-sensible'
     Plug 'ervandew/supertab'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
     Plug 'vimwiki/vimwiki'
     "let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-    Plug 'PProvost/vim-ps1'
-    Plug 'lervag/vimtex'
+    Plug 'PProvost/vim-ps1', {'for': 'ps1'}
+    Plug 'lervag/vimtex', {'for': 'tex'}
     let g:tex_flavor='latex'
     let g:vimtex_view_general_viewer = 'SumatraPDF'
     let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
