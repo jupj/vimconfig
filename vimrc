@@ -40,6 +40,8 @@ if isdirectory(s:vimdir . "/bundle/Vundle.vim")
     Plugin 'fatih/vim-go'
     " Use goimports instead of gofmt when saving files
     let g:go_fmt_command = "goimports"
+    " Use guru instead of gocode
+    "let g:go_info_mode = 'guru'
     " Automatically show info about the code under cursor
     "let g:go_auto_type_info = 1
     " Show all output in quickfix list
