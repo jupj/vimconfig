@@ -228,17 +228,12 @@ inoremap <C-U> <C-G>u<C-U>
 " use map instead of mapleader, so that the showcmd will show \
 " (instead of a non-visible space)
 map <space> <leader>
-" <leader>s = substitute the current word or selection
-nnoremap <leader>s yiw:%s/<c-r>"/
-vnoremap <leader>s y:%s/<c-r>"/
 " <leader>c = copy the whole file contents into the clipboard
 nnoremap <leader>c :%y*<CR>
 " <leader>w = save the current file
 nnoremap <leader>w :up<CR>
 " <leader>q = :q
 nnoremap <leader>q :q<CR>
-" <leader>1 = :!
-nnoremap <leader>1 :!
 
 " <F4>: toggle spell checking
 nmap <F4> :call ToggleSpell()<CR>
@@ -314,12 +309,19 @@ omap ö [
 omap ä ]
 xmap ö [
 xmap ä ]
-
-" Filter through awk
-nnoremap <leader>a :%!awk ''<Left>
-vnoremap <leader>a !awk ''<Left>
 " }}}
 
 " gl will open up the link under the cursor (in Windows)
-nnoremap gl :execute "!start " . expand("<cfile>")<cr>
+nnoremap gl :silent execute "!start " . expand("<cfile>")<cr>
+
+" Go to window: <ctrl-[hjkl]>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+" Go to window and make it big: <leader>[hjkl]
+nnoremap <c-w><c-h> <c-w>h <c-w><c-_>
+nnoremap <c-w><c-j> <c-w>j <c-w><c-_>
+nnoremap <c-w><c-k> <c-w>k <c-w><c-_>
+nnoremap <c-w><c-l> <c-w>l <c-w><c-_>
 " }}}
