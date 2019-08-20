@@ -315,9 +315,9 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-" Go to window and make it big: <leader>[hjkl]
-nnoremap <c-w><c-h> <c-w>h <c-w><c-_>
-nnoremap <c-w><c-j> <c-w>j <c-w><c-_>
-nnoremap <c-w><c-k> <c-w>k <c-w><c-_>
-nnoremap <c-w><c-l> <c-w>l <c-w><c-_>
+" Go to window maps for terminal:
+tnoremap <c-h> <c-w>h
+tnoremap <c-j> <c-w>j
+tnoremap <c-k> <c-w>k
+tnoremap <c-l> <c-w>l
 " }}}
