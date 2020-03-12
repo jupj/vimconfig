@@ -29,7 +29,7 @@ if !empty(glob(s:vimdir . "/autoload/plug.vim"))
     " Use guru instead of gocode
     "let g:go_info_mode = 'guru'
     " Automatically show info about the code under cursor
-    "let g:go_auto_type_info = 1
+    let g:go_auto_type_info = 1
     " Show all output in quickfix list
     let g:go_list_type = "quickfix"
     " Change GoDef to use 'godef' instead of 'guru', as this works
