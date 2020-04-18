@@ -36,6 +36,7 @@ if !empty(glob(s:vimdir . "/autoload/plug.vim"))
     " better outside GOPATH
     let g:go_def_mode = 'godef'
     Plug 'thinca/vim-localrc'
+    Plug 'jupj/vim-mdo'
     Plug 'digitaltoad/vim-pug', {'for': 'pug'} " Jade templates
     Plug 'mfukar/robotframework-vim', {'for': 'robot'}
     Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
