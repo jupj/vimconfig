@@ -17,6 +17,7 @@ nmap <c-left> <c-t>
 " Add abbreviations
 iabbrev <buffer> perr if err != nil {<cr>panic(err)<cr>}
 iabbrev <buffer> rerr <esc>:GoIfErr<cr>O
+iabbrev <buffer> terr if err != nil {<cr>t.Fatal(err)<cr>}
 iabbrev <buffer> defc defer.Close()<left><left><left><left><left><left><left><left>
 
 " Set tab settings
