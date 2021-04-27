@@ -87,6 +87,7 @@ set expandtab
 set shiftwidth=4
 set smarttab            "tab uses shiftwidth for indent
 set autoindent
+set nojoinspaces        " Do not add two spaces between sentences
 
 set scrolloff=1         " Show at least one line under/above cursor
 set sidescrolloff=5     " Show at least 5 chars left/right of cursor
@@ -117,7 +118,7 @@ set number
 set norelativenumber
 
 " Disable the error beep:
-set noerrorbells
+set belloff=all
 
 if v:version >= 800
     " Don't touch the end of file char automagically
@@ -203,6 +204,11 @@ if has("autocmd")
 
         " Source the vimrc file after saving it
         autocmd BufWritePost $MYVIMRC source $MYVIMRC | :e
+    augroup END
+    augroup Jenkinsfile
+        au!
+        autocmd BufNewFile,BufRead Jenkinsfile setf groovy
+        autocmd BufNewFile,BufRead Jenkinsfile.* setf groovy
     augroup END
 endif " has("autocmd")
 " }}}
