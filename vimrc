@@ -15,6 +15,9 @@ if !empty(glob(s:vimdir . "/autoload/plug.vim"))
     nnoremap <leader>m :CtrlPMRU<CR>
     let g:ctrlp_custom_ignore = '\v[\/](node_modules)$'
     Plug 'scrooloose/nerdcommenter'
+    let g:NERDCustomDelimiters = {
+        \ 'c': { 'left': '//' },
+    \ }
     Plug 'scrooloose/syntastic'
     let g:pymode_python = 'python3'
     Plug 'vim-airline/vim-airline'
