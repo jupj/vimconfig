@@ -330,4 +330,10 @@ tnoremap <c-h> <c-w>h
 tnoremap <c-j> <c-w>j
 tnoremap <c-k> <c-w>k
 tnoremap <c-l> <c-w>l
+
+" Auto-close brackets
+inoremap (<cr> (<cr>)<esc>O
+inoremap [<cr> [<cr>]<esc>O
+inoremap {<cr> {<cr>}<esc>O
+inoremap {,<cr> {<cr>},<esc>O
 " }}}
