@@ -29,15 +29,10 @@ if !empty(glob(s:vimdir . "/autoload/plug.vim"))
     Plug 'fatih/vim-go', {'for': 'go'}
     " Use goimports instead of gofmt when saving files
     let g:go_fmt_command = "goimports"
-    " Use guru instead of gocode
-    "let g:go_info_mode = 'guru'
     " Automatically show info about the code under cursor
     let g:go_auto_type_info = 1
     " Show all output in quickfix list
     let g:go_list_type = "quickfix"
-    " Change GoDef to use 'godef' instead of 'guru', as this works
-    " better outside GOPATH
-    let g:go_def_mode = 'godef'
     Plug 'thinca/vim-localrc'
     Plug 'jupj/vim-mdo'
     Plug 'digitaltoad/vim-pug', {'for': 'pug'} " Jade templates
@@ -47,8 +42,6 @@ if !empty(glob(s:vimdir . "/autoload/plug.vim"))
     Plug 'ervandew/supertab'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired'
-    Plug 'vimwiki/vimwiki'
-    "let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
     Plug 'PProvost/vim-ps1', {'for': 'ps1'}
     Plug 'lervag/vimtex', {'for': 'tex'}
     let g:tex_flavor='latex'
@@ -159,6 +152,8 @@ if exists('s:colorscheme') && !empty(globpath(&rtp, 'colors/' . s:colorscheme . 
     exec "colorscheme " . s:colorscheme
     set background=dark
 endif
+
+set cursorline
 
 " Spell check
 function! ToggleSpell()
@@ -305,9 +300,6 @@ vnoremap <LeftRelease> "*ygv
 " Use <leader>g to grep the current word
 nnoremap <leader>g yiw:Ggrep \b<c-r>"\b
 
-nnoremap j gj
-nnoremap k gk
-
 " Use scandinavian chars for square brackets
 nmap ö [
 nmap ä ]
@@ -315,7 +307,6 @@ omap ö [
 omap ä ]
 xmap ö [
 xmap ä ]
-" }}}
 
 " gl will open up the link under the cursor (in Windows)
 nnoremap gl :silent execute "!start " . expand("<cfile>")<cr>
